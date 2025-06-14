@@ -2,9 +2,12 @@ import { Elysia } from "elysia";
 
 import { corsPlugin } from "./plugins/cors";
 
+import { loadMicroservices } from "./functions/loadMicroservices";
 import { loadRoutes } from "./functions/loadRoutes";
 
 const app = new Elysia().use(corsPlugin);
+await loadMicroservices(app);
+
 loadRoutes(app);
 
 app.listen(3000);
